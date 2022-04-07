@@ -1,7 +1,6 @@
 - 👋 Hi, I’m @EWYan
 - 👀 I’m interested in low-level programming
 - 🌱 I’m currently learning RUSTLang & os implementation
-- 💞️ I’m looking to collaborate on MAYBEYOU!!!
 
 
 <!---
