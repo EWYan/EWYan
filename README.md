@@ -1,8 +1,87 @@
-- 👋 Hi, there
-- 👀 I’m interested in low-level programming
-- 🌱 I’m currently work on work
+# Raspberry Pi 5（8GB）全源码构建教学项目
 
-<!---
-EWYan/EWYan is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
+这是一个围绕 **Raspberry Pi 5 8GB** 的硬件与 Linux 系统教学项目：
+从最底层开始，尽量通过源码构建完整软件栈，帮助学习者理解“硬件如何驱动软件、软件如何控制硬件”。
+
+## 项目目标
+
+- 从零搭建可工作的 Linux 开发环境（交叉编译 + 板端原生编译）。
+- 从源码构建关键系统组件（bootloader、kernel、rootfs、工具链、用户空间软件）。
+- 掌握硬件接口（GPIO / I2C / SPI / UART / PWM）在 Linux 下的驱动与应用开发。
+- 建立可复现实验流程：文档化、脚本化、版本化。
+
+## 教学路线（建议）
+
+### 阶段 1：硬件与启动链路
+
+1. Raspberry Pi 5 板卡结构与供电、散热、存储方案（SD / NVMe）。
+2. 启动流程认知：ROM → 固件 → 引导加载器 → Linux 内核 → init。
+3. 串口调试与早期日志抓取。
+
+### 阶段 2：源码构建基础
+
+1. 构建主机环境准备（Ubuntu / Debian）。
+2. Git、Make、C/C++ 工具链、调试工具（gdb、strace、perf）准备。
+3. 交叉编译链与 sysroot 概念。
+
+### 阶段 3：内核与设备树
+
+1. 获取并编译 Linux 内核源码。
+2. 设备树（DTS/DTB）结构解析与裁剪。
+3. 内核配置（menuconfig）与模块化构建。
+4. 驱动加载、dmesg 追踪、故障定位。
+
+### 阶段 4：根文件系统与用户空间
+
+1. BusyBox 根文件系统最小化构建。
+2. init 系统与启动服务管理。
+3. 从源码编译常用基础软件（如 OpenSSH、Python、cmake 等）。
+4. 包管理与“源码构建 + 二进制包”混合策略。
+
+### 阶段 5：硬件接口实战
+
+1. GPIO 输入输出与中断。
+2. I2C 传感器读取与寄存器调试。
+3. SPI 外设通信。
+4. UART 协议调试。
+5. PWM 电机/舵机控制。
+
+### 阶段 6：系统优化与工程化
+
+1. 启动时间优化与服务裁剪。
+2. 性能分析（CPU、内存、IO、温度）。
+3. 自动化构建脚本（Makefile / shell / CI）。
+4. 发布镜像、版本管理与回滚方案。
+
+## 目录规划（建议）
+
+```text
+.
+├── docs/                 # 教学文档与实验手册
+├── scripts/              # 构建脚本、烧录脚本、调试脚本
+├── toolchains/           # 工具链说明与配置
+├── kernel/               # 内核相关配置与补丁
+├── rootfs/               # 根文件系统构建配置
+├── examples/             # 外设驱动与用户态示例
+└── labs/                 # 分阶段实验项目
+```
+
+## 学习产出
+
+完成本项目后，学习者应能够：
+
+- 独立完成树莓派 5 的基础系统构建与调试。
+- 理解 Linux 内核、设备树与驱动开发的基本协作关系。
+- 使用源码构建方式搭建定制化嵌入式 Linux 系统。
+- 具备将教学实验扩展为工程项目的能力。
+
+## 当前状态
+
+项目正在初始化：先完成教学大纲与构建流程文档，再逐步补充每个阶段的脚本与代码示例。
+
+---
+
+如果你希望，我可以下一步直接补齐：
+1）第一阶段实验手册模板；
+2）内核源码构建脚本；
+3）最小 rootfs 一键构建脚本。
